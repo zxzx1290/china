@@ -22,7 +22,7 @@ RUN git clone -b manyuser https://github.com/zxzx1290/shadowsocksr.git ssr
 COPY entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
-RUN sed -i '/ulimit -n 65536/d' /etc/init.d/squid3
+RUN sed -i '/ulimit -n 65535/d' /etc/init.d/squid3
 
 # Configure container to run as an executable
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
