@@ -8,13 +8,6 @@ FROM debian:jessie
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
-# Update packages
-RUN  apt-get autoclean -y && \
-  apt-get autoremove -y && \
-  rm -rf /usr/share/locale/* && \
-  rm -rf /var/cache/debconf/*-old && \
-  rm -rf /var/lib/apt/lists/* && \
-  rm -rf /usr/share/doc/*
 
 RUN apt-get update && \
     apt-get install -y openssh-server python-pip libnet1 libnet1-dev libpcap0.8 libpcap0.8-dev git squid curl
