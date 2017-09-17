@@ -10,14 +10,14 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
 RUN apt-get update && \
-    apt-get install -y openssh-server python-pip git squid3 curl
+    apt-get install -y openssh-server git squid3 curl python
 
 
 RUN echo "root:password"|chpasswd
 RUN sed -ri 's/^PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config && \
 	sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
 
-RUN pip install shadowsocks
+RUN git clone -b manyuser https://github.com/zxzx1290/shadowsocksr.git ssr
 
 COPY entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh

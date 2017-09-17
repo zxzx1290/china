@@ -37,4 +37,4 @@ forwarded_for transparent' > /etc/squid3/squid.conf
 
 service squid3 start
 
-/usr/local/bin/ssserver -s 0.0.0.0 -p 6080 -k china -m aes-256-cfb -O auth_sha1_v4 -o http_simple
+/usr/bin/python /ssr/shadowsocks/server.py -s 0.0.0.0 -p 6080 -k china -m aes-256-cfb -O auth_sha1_v4 -o http_simple
