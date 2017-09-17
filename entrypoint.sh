@@ -21,8 +21,6 @@ http_access deny to_localhost
 http_access allow crx_url
 http_access deny all
 http_port 8888
-cache_dir ufs /var/spool/squid 2048 16 256
-coredump_dir /var/spool/squid
 refresh_pattern .       0   20% 4320
 via off
 request_header_access X-Sogou-Auth deny all
