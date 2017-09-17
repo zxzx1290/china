@@ -10,7 +10,7 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
 RUN apt-get update && \
-    apt-get install -y openssh-server git squid3 curl python net-tools
+    apt-get install -y openssh-server git squid3 curl python net-tools vim
 
 
 RUN echo "root:password"|chpasswd
@@ -21,6 +21,8 @@ RUN git clone -b manyuser https://github.com/zxzx1290/shadowsocksr.git ssr
 
 COPY entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
+
+RUN sed -i '/ulimit -n 65536/d' ./infile
 
 # Configure container to run as an executable
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
